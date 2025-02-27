@@ -5,6 +5,7 @@ import ProjectDetails from './views/ProjectDetails'
 import PetsQr from './views/PetsQr'
 import GymGestion from './views/GymGestion'
 import GestionDeVentas from './views/GestionDeVentas'
+import ChatbotDemo from './views/ChatbotDemo'
 
 const Router = () => {
   return (
@@ -18,6 +19,8 @@ const Router = () => {
         <Route exact path="/proyectsPetsQr" element={<PetsQr/>} />
         <Route exact path="/proyectsVentas" element={<GestionDeVentas/>} />
         <Route exact path="/proyectsBot" element={<ProjectDetails/>} />
+        <Route exact path="/chatbot" element={<ChatbotDemo/>} />
+
 
 
 

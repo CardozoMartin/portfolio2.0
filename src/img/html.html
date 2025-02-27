@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo de Chatbot WhatsApp</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #efeae2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .header {
+            background-color: #075e54;
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            width: 100%;
+            margin-bottom: 2rem;
+        }
+
+        .chat-container {
+            max-width: 450px;
+            width: 100%;
+            background: #e5ddd5;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .chat-header {
+            background: #075e54;
+            color: white;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .bot-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        .chat-body {
+            padding: 1rem;
+            background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABVSURBVDiNY/z//z8DNQETlUIZGBgYmKjlRQYGBgYWBgYGBiIVMzIwMDC8+/GHgYGBgYEFm2IGBgYGJgYGBob///8zUiV5MTAwMDCSqH7U0NGQgQUAAN8HC6CFxznMAAAAAElFTkSuQmCC');
+            min-height: 400px;
+        }
+
+        .message {
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .message.bot {
+            flex-direction: row;
+        }
+
+        .message.user {
+            flex-direction: row-reverse;
+        }
+
+        .message-content {
+            max-width: 70%;
+            padding: 0.8rem;
+            border-radius: 7.5px;
+            position: relative;
+            box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+        }
+
+        .bot .message-content {
+            background: white;
+            margin-right: 40px;
+        }
+
+        .user .message-content {
+            background: #dcf8c6;
+            margin-left: 40px;
+        }
+
+        .message-time {
+            font-size: 0.75rem;
+            color: #999;
+            float: right;
+            margin-top: 5px;
+            margin-left: 10px;
+        }
+
+        .demo-notice {
+            background: #fff;
+            border-left: 4px solid #25d366;
+            color: #333;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 800px;
+            border-radius: 5px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .contact-button {
+            background: #25d366;
+            color: white;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+            font-size: 1rem;
+        }
+
+        .contact-button:hover {
+            background: #128c7e;
+        }
+
+        .video-section {
+            max-width: 800px;
+            width: 100%;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+            height: 0;
+            overflow: hidden;
+            margin: 1rem 0;
+            background: #f0f0f0;
+            border-radius: 5px;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f0f0f0;
+            color: #666;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            
+            .chat-container {
+                margin: 1rem 0;
+            }
+
+            .video-section {
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <h1>Demo Chatbot WhatsApp</h1>
+    </header>
+
+    <div class="chat-container">
+        <div class="chat-header">
+            <img src="/api/placeholder/40/40" alt="Bot Avatar" class="bot-avatar">
+            <div>
+                <h2>Chat Bot</h2>
+                <small>en línea</small>
+            </div>
+        </div>
+        <div class="chat-body">
+            
+            <div class="message user">
+                <div class="message-content">
+                    Hola, quisiera hacer un pedido
+                    <span class="message-time">10:01</span>
+                </div>
+            </div>
+            <div class="message bot">
+                <div class="message-content">
+                    👋 *¡Bienvenido a Heladería Ice Cream!* 🍦'
+                    <span class="message-time">10:02</span>
+                </div>
+                
+               
+            </div>
+            <div class="message bot">
+                <div class="message-content">
+                    👋 
+                    ¿Te gustaría realizar un pedido hoy? Responde con 'Sí' para continuar o 'No' para salir.
+                    <span class="message-time">10:02</span>
+                </div>
+                
+            </div>
+            <div class="message user">
+                <div class="message-content">
+                    Si
+                    <span class="message-time">10:03</span>
+                </div>
+            </div>
+            <div class="message bot">
+                <div class="message-content">
+                    🍨 *¿Qué producto deseas ordenar hoy?*
+                    <span class="message-time">10:04</span>
+                </div>
+                
+            </div>
+            <div class="message bot">
+                <div class="message-content">
+                    🍨 Elige tu helado favorito:
+                    1️⃣ 1 Kilo de helado – $10.000
+                    2️⃣ 1/2 Kilo de helado – $5.500
+                    3️⃣ 1/4 Kilo de helado – $3.000
+                    4️⃣ Caja de helados de palito 🍦 (8 unidades) – $8.000
+                    5️⃣ Torta helada 🎂❄️ – $15.000
+                    
+                    ¡Elige tu opción y disfruta de un momento dulce! 🥰
+                    <span class="message-time">10:4</span>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="video-section">
+        <h2>Video Demostrativo</h2>
+        <p>Mira cómo funciona nuestro chatbot en tiempo real:</p>
+        <div class="video-container">
+            <div class="video-placeholder">
+                [Aquí puedes insertar tu video demostrativo]
+            </div>
+        </div>
+        <p><small>* Para insertar tu video, reemplaza el div "video-placeholder" con el código de inserción de tu video de YouTube o Vimeo.</small></p>
+    </div>
+
+    <div class="demo-notice">
+        <h3>📱 Esta es una demostración visual</h3>
+        <p>Esta es una representación estática de nuestro chatbot de WhatsApp. Para ver el chatbot en funcionamiento en tiempo real, contáctanos.</p>
+        <button class="contact-button">Solicitar Demo en Vivo</button>
+    </div>
+</body>
+</html>

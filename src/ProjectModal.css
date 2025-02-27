@@ -1,104 +1,165 @@
-/* ProjectModal.css */
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+
+
+.body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #efeae2;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.header1 {
+  background-color: #075e54;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.chat-container {
+  max-width: 450px;
+  width: 100%;
+  background: #e5ddd5;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.chat-header {
+  background: #075e54;
+  color: white;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.bot-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.chat-body {
+  padding: 1rem;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABVSURBVDiNY/z//z8DNQETlUIZGBgYmKjlRQYGBgYWBgYGBiIVMzIwMDC8+/GHgYGBgYEFm2IGBgYGJgYGBob///8zUiV5MTAwMDCSqH7U0NGQgQUAAN8HC6CFxznMAAAAAElFTkSuQmCC');
+  min-height: 400px;
+}
+
+.message {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+}
+
+.message.bot {
+  flex-direction: row;
+}
+
+.message.user {
+  flex-direction: row-reverse;
+}
+
+.message-content {
+  max-width: 70%;
+  padding: 0.8rem;
+  border-radius: 7.5px;
+  position: relative;
+  box-shadow: 0 1px 0.5px rgba(0,0,0,0.13);
+}
+
+.bot .message-content {
+  background: white;
+  margin-right: 40px;
+}
+
+.user .message-content {
+  background: #dcf8c6;
+  margin-left: 40px;
+}
+
+.message-time {
+  font-size: 0.75rem;
+  color: #999;
+  float: right;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+
+.demo-notice {
+  background: #fff;
+  border-left: 4px solid #25d366;
+  color: #333;
+  padding: 1rem;
+  margin: 2rem auto;
+  max-width: 800px;
+  border-radius: 5px;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.contact-button {
+  background: #25d366;
+  color: white;
+  border: none;
+  padding: 0.8rem 2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.contact-button:hover {
+  background: #128c7e;
+}
+
+.video-section {
+  max-width: 800px;
+  width: 100%;
+  margin: 2rem auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* Aspect ratio 16:9 */
+  height: 0;
+  overflow: hidden;
+  margin: 1rem 0;
+  background: #f0f0f0;
+  border-radius: 5px;
+}
+
+.video-placeholder {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f0f0f0;
+  color: #666;
+}
+
+@media (max-width: 600px) {
+  body {
+      padding: 10px;
   }
   
-  .modal-container {
-    background-color: white;
-    border-radius: 8px;
-    max-width: 42rem;
-    width: 100%;
-    margin: 0 1rem;
-    overflow: hidden;
+  .chat-container {
+      margin: 1rem 0;
   }
-  
-  .modal-header {
-    padding: 1rem;
-    border-bottom: 1px solid #e5e5e5;
-    position: relative;
+
+  .video-section {
+      margin: 1rem 0;
+      padding: 1rem;
   }
-  
-  .modal-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-  
-  .modal-close {
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    color: #6b7280;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-  }
-  
-  .modal-close:hover {
-    color: #374151;
-  }
-  
-  .modal-image {
-    width: 100%;
-    height: 16rem;
-    object-fit: cover;
-  }
-  
-  .modal-content {
-    padding: 1rem;
-  }
-  
-  .modal-description {
-    color: #4b5563;
-    margin-bottom: 1rem;
-  }
-  
-  .modal-technologies {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-  }
-  
-  .tech-badge {
-    padding: 0.25rem 0.75rem;
-    background-color: #f3f4f6;
-    border-radius: 9999px;
-    font-size: 0.875rem;
-  }
-  
-  .modal-actions {
-    display: flex;
-    gap: 1rem;
-  }
-  
-  .modal-button {
-    padding: 0.5rem 1rem;
-    border-radius: 4px;
-    text-decoration: none;
-    transition: background-color 0.2s;
-  }
-  
-  .modal-button.primary {
-    background-color: #3b82f6;
-    color: white;
-  }
-  
-  .modal-button.primary:hover {
-    background-color: #2563eb;
-  }
-  
-  .modal-button.secondary {
-    border: 1px solid #3b82f6;
-    color: #3b82f6;
-  }
-  
-  .modal-button.secondary:hover {
-    background-color: #eff6ff;
-  }
+}
